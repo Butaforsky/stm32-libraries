@@ -10,3 +10,4 @@ How to use it: hold SHIFT in folder with script,
 4. New .c and .h files will append in this folder
 
 "hardware" folder has an LM95071 temperature sensor lib 
+Also you need to add "short_types.h" for it, or rename types manualy
