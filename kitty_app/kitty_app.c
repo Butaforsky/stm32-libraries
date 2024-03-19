@@ -9,7 +9,7 @@
 #include "short_types.h"
 
 /* User defines */
-#include "kitty_api_led.h"
+
 /* User enums */
 
 /* User structs */

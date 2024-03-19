@@ -24,7 +24,7 @@ typedef struct UART
 {
   u32 baudrate;
   u8 data_bits;
-  UART_PARITY parity;
+  u8 parity;
   u8 stop_bits;
   
 
