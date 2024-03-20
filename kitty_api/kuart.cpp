@@ -8,7 +8,7 @@ void UART::init(UART_HandleTypeDef *huart)
 
 void UART::send(uint8_t *data)
 {
-  HAL_UART_Transmit(this->huart, data, strlen((char *)data), HAL_MAX_DELAY);
+  HAL_UART_Transmit(this->huart, data, strlen((char *)data), 1000);
 }
 
 void UART::await_async()
