@@ -25,10 +25,7 @@ class UART
 
 public:
   void init(UART_HandleTypeDef* huart);
-  void toggle();
-  void on();
-  void off();
-  void blink_ms(uint32_t delay);
+  void send(uint8_t* data);
 };
 /* User typedefs */
 
