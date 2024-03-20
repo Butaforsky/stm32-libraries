@@ -1,11 +1,14 @@
+#ifndef __KITTY_API_TIM_H__
+#define __KITTY_API_TIM_H__
+
 /**
  * 
- * @brief App for kitty board
+ * @brief Api for kitty board * 
  * @author butaforsky
  * @version 0.1.0
  */
 
-#include "kitty_app.h"
+#include "main.h"
 #include "short_types.h"
 
 /* User defines */
@@ -19,10 +22,6 @@
 /* User variables */
 
 /* User functions */
+void tim_init(void);
 
-
-
-
-
-
-
+#endif

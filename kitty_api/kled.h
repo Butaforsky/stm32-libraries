@@ -18,11 +18,19 @@
 /* User structs */
 
 /* User typedefs */
+class LED{
+    GPIO_TypeDef *port;
+    uint16_t pin;
 
+    public:
+        void init(GPIO_TypeDef *port, uint16_t pin);
+        void on();
+        void off();
+        void toggle();
+};
 /* User variables */
 
 /* User functions */
-int kitty_api_led_init(void);
 
 
 

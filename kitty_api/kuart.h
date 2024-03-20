@@ -11,13 +11,25 @@
 #include "main.h"
 #include "short_types.h"
 #include "stdbool.h"
+#include "usart.h"
 
 /* User defines */
 
 /* User enums */
 
 /* User structs */
+class UART
+{
+  UART_HandleTypeDef* huart;
+  uint32_t pin;
 
+public:
+  void init(UART_HandleTypeDef* huart);
+  void toggle();
+  void on();
+  void off();
+  void blink_ms(uint32_t delay);
+};
 /* User typedefs */
 
 /* User variables */
