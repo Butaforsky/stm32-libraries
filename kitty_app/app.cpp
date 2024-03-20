@@ -8,7 +8,8 @@
 UART debug, debug2;
 LED blink, blink2;
 timer blueLED, greenLED;
-u16 ticks;
+u16 ticks = 0;
+u8 flag = 0;
 
 extern "C" void app_loop(void)
 {
@@ -37,6 +38,8 @@ void app_init(void)
   greenLED.set_period(5000);
   greenLED.set_duty(timer::CH3, 4);
   greenLED.start(timer::PWMN);
+
+  debug2.await_async();
 }
 
 void app(void)
@@ -45,15 +48,29 @@ void app(void)
   {
     blink.toggle();
     blink2.toggle();
-    debug.send((u8 *)"Hello World!\n");
-    debug2.send((u8 *)"Hello World!\n");
-    HAL_Delay(1000);
+
+    HAL_Delay(100);
     blueLED.set_duty(timer::CH2, ticks);
     greenLED.set_duty(timer::CH3, ticks);
     ticks++;
-    if (ticks > 100)
+    if (ticks > 50)
     {
       ticks = 0;
     }
+    if (flag == 1)
+    {
+      flag = 0;
+      blueLED.set_duty(timer::CH2, 1);
+      debug2.send((u8*)"lox\r\n");
+      debug2.await_async();
+    }
+  }
+}
+
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+  if (huart->Instance == USART3)
+  {
+    flag = 1;
   }
 }

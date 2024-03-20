@@ -21,11 +21,12 @@
 class UART
 {
   UART_HandleTypeDef* huart;
-  uint32_t pin;
+  u8 rx[50];
 
 public:
   void init(UART_HandleTypeDef* huart);
   void send(uint8_t* data);
+  void await_async();
 };
 /* User typedefs */
 
