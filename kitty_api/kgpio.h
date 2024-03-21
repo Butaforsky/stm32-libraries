@@ -75,7 +75,7 @@ public:
     HIGH_VALUE = 1
   };
 
-  void init(GPIO_TypeDef port, gpio::PIN pin, gpio::MODE mode, gpio::SPEED speed, gpio::PULL pull);
+  void init(GPIO_TypeDef port, gpio::PIN pin, gpio::VALUE state, gpio::MODE mode, gpio::SPEED speed, gpio::PULL pull);
 };
 
 #endif // !__INC_KGPIO_H__
