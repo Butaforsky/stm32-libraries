@@ -24,9 +24,10 @@ class LED{
 
     public:
         void init(GPIO_TypeDef *port, uint16_t pin);
-        void on();
+        int on();
         void off();
         void toggle();
+        char* info();
 };
 /* User variables */
 

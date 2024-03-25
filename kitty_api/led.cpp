@@ -7,6 +7,9 @@
 
 #include "kled.h"
 #include "short_types.h"
+#include "string.h"
+
+/* User includes */
 
 /* User defines */
 
@@ -19,15 +22,23 @@
 /* User variables */
 
 /* User functions */
+
 void LED::init(GPIO_TypeDef *port, uint16_t pin)
 {
   LED::port = port;
   LED::pin = pin;
 }
 
-void LED::on()
+int  LED::on()
 {
-  HAL_GPIO_WritePin(LED::port, LED::pin, GPIO_PIN_SET);
+  if (LED::port != NULL || LED::pin != 0)
+  {
+    HAL_GPIO_WritePin(LED::port, LED::pin, GPIO_PIN_SET);
+    return 0;
+  }
+  else{
+    return 1;
+  }
 }
 
 void LED::off()
@@ -38,4 +49,12 @@ void LED::off()
 void LED::toggle()
 {
   HAL_GPIO_TogglePin(LED::port, LED::pin);
+}
+
+char *LED::info()
+{
+  char *info = new char[100];
+  LED::port == GPIOA ? strcpy(info, "GPIOA") : strcpy(info, "GPIOB");
+  LED::pin == GPIO_PIN_0 ? strcat(info, "0") : strcat(info, "1");
+  return info;
 }

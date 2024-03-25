@@ -2,6 +2,7 @@
 
 void timer::init(TIM_HandleTypeDef *tim, timer::MODE mode, timer::CHANNEL channel)
 {
+  timer::_init = true;
   htim = tim;
   if (mode == timer::MODE::PWM || mode == timer::MODE::PWMN)
   {
@@ -71,5 +72,6 @@ void timer::set_duty(timer::CHANNEL channel, uint16_t duty)
 
 void timer::set_period(uint32_t period)
 {
+  assert_param(timer::htim->Instance);
   timer::htim->Instance->ARR = period;
 }

@@ -25,6 +25,7 @@
 /* User functions */
 class timer
 {
+  bool _init = false;
   u16 channel;
   TIM_HandleTypeDef *htim;
 
