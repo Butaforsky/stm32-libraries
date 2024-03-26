@@ -21,7 +21,7 @@
 class UART
 {
   UART_HandleTypeDef* huart;
-  u8 rx[50];
+  u8 rx[1];
 
 public:
   void init(UART_HandleTypeDef* huart);

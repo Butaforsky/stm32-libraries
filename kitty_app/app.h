@@ -4,9 +4,11 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+
   void app_loop(void);
   void app_c(void);
   void app_init(void);
+  
 #ifdef __cplusplus
 }
 #endif

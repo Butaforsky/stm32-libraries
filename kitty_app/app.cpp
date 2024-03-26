@@ -4,12 +4,15 @@
 #include "kled.h"
 #include "ktim.h"
 #include "kuart.h"
-#include "string.h"
+
+
+
 UART debug, debug2;
 LED blink, blink2, blink3;
 timer blueLED, greenLED, redLED;
 u16 ticks = 0;
 u8 flag = 0;
+u8 rx[3] = {0,};
 
 extern "C" void app_loop(void)
 {
@@ -43,7 +46,6 @@ void app_init(void)
   debug2.await_async();
   debug2.send((u8 *)"lox\r\n");
   debug2.send((u8*)blink2.on());
-  memcpy(tx, blink3.info(), 100);
   debug2.send((u8 *)tx);
 }
 
@@ -54,11 +56,11 @@ void app(void)
     blink.toggle();
     blink2.toggle();
 
-    HAL_Delay(100);
+    HAL_Delay(1000);
     blueLED.set_duty(timer::CH2, ticks);
     greenLED.set_duty(timer::CH3, ticks);
     ticks++;
-    if (ticks > 50)
+    if (ticks > 40)
     {
       ticks = 0;
     }
@@ -67,7 +69,7 @@ void app(void)
       flag = 0;
       blueLED.set_duty(timer::CH2, 1);
       debug2.send((u8 *)"lox\r\n");
-      debug2.await_async();
+      HAL_UART_Receive_IT(&huart3, (u8 *)rx, 3);
     }
   }
 }
