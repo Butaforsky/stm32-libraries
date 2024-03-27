@@ -1,7 +1,5 @@
 #include "kexti.h"
 
-
-
 status_t init(GPIO_TypeDef *_port, uint16_t _pin, edge_t _edge)
 {
   // Enable SYSCFG clock
