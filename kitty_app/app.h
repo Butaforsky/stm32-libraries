@@ -1,6 +1,8 @@
 #ifndef INC_APP_H_
 #define INC_APP_H_
- 
+
+#include "cmsis_os.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif

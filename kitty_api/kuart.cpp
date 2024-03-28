@@ -15,7 +15,7 @@ void UART::send(uint8_t *data)
   }
 }
 
-void UART::await_async()
+void UART::await_async(u8 *rx_buf, u8 len)
 {
-  HAL_UART_Receive_IT(this->huart, this->rx, 1);
+  HAL_UART_Receive_IT(this->huart, rx_buf, len);
 }

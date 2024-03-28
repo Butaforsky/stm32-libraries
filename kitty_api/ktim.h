@@ -26,10 +26,10 @@
 class timer
 {
   bool _init = false;
-  u16 channel;
   TIM_HandleTypeDef *htim;
 
 public:
+  u16 channel;
   enum MODE
   {
     BASIC,

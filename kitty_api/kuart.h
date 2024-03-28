@@ -26,7 +26,7 @@ class UART
 public:
   void init(UART_HandleTypeDef* huart);
   void send(uint8_t* data);
-  void await_async();
+  void await_async(u8 *rx_buf, u8 len);
 };
 /* User typedefs */
 
